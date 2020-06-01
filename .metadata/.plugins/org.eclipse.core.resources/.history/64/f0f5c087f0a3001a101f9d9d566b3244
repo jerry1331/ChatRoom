@@ -1,0 +1,10 @@
+package friendlistUI;
+
+import dataBase.*;
+
+public class ListPane {
+
+	public UserInfo findUserByID(int IDNum) {
+
+	}
+}

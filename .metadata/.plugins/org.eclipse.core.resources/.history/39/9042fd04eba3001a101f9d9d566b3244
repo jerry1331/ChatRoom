@@ -1,0 +1,13 @@
+package client;
+
+import java.io.*;
+import java.net.*;
+
+import database.*;
+import message.*;
+import tools.*;
+
+//  此类用于与服务器进行通信
+public class ChatClient extends Thread {
+
+}

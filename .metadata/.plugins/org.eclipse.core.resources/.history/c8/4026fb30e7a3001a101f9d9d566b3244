@@ -1,0 +1,11 @@
+package tools;
+
+import java.io.ByteArrayInputStream;
+import java.io.DataInputStream;
+import java.io.IOException;
+
+import message.*;
+// 此类用于解构消息
+public class ParseTool {
+
+}

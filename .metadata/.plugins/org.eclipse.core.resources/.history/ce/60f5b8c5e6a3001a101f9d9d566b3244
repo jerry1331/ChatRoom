@@ -1,0 +1,10 @@
+package message;
+
+import java.io.*;
+
+/*
+ * 消息头为所有的消息的共用体
+ */
+public class MsgHead {
+
+}

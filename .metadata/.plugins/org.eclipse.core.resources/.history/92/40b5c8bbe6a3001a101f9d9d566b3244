@@ -1,0 +1,8 @@
+package message;
+
+import java.io.*;
+import tools.ParseTool;
+
+public class MsgHead {
+
+}

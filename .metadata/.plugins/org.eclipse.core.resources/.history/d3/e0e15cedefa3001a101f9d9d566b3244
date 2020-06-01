@@ -1,0 +1,44 @@
+package chatUI;
+
+public class DialogUI {
+
+	
+//	  用于显示对方发送来的消息
+	public void ShowMsg(String msg) {
+		String text = MsgArea.getText();
+		text += nikeName + " Says:" + msg + "\r\n";
+		MsgArea.setText(text);
+	}
+
+	
+//	  用于显示已经发送的消息
+	public void SendMsg(String msg) {
+		String text = MsgArea.getText();
+		text += Figures.NickName + " Says:" + msg + "\r\n";
+		MsgArea.setText(text);
+	}
+
+	
+//	  窗口抖动
+	public void LetsShack() {
+		int x = this.getX();
+		int y = this.getY();
+		for (int i = 0; i < 20; i++) {
+			if ((i & 1) == 0) {
+				x += 3;
+				y += 3;
+			} else {
+				x -= 3;
+				y -= 3;
+			}
+			this.setLocation(x, y);
+			try {
+				Thread.sleep(50);
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
+		}
+
+	}
+
+}

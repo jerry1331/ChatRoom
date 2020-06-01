@@ -1,0 +1,41 @@
+package tools;
+
+import java.io.*;
+
+import chatUI.*;
+import database.*;
+
+/*
+ * 这个工具主要处理会话相关功能
+ * 1.显示消息
+ * 2.发送消息
+ */
+public class DialogTool {
+	public static void ShowMessage(int from,String msg){
+		/*
+		 * 找到是否打开了于是对话的对话UI
+		 */
+		if(DialogDB.dialogDB.containsKey(String.valueOf(from))){
+			/*
+			 * 有的话
+			 */
+			DialogUI dialog = DialogDB.dialogDB.get(String.valueOf(from));
+			dialog.ShowMsg(msg);
+			//dialog.LetsShack();
+		}
+		else{
+			/*
+			 * 没有的话 A new Msg
+			 */
+			//Figures.list.Hav_Mem_Msg(from);
+			/*
+			 * 直接弹出窗口
+			 */
+			UserInfo user = Figures.list.findUserByID(from);
+			//System.out.println("New MSG From"+user.getNickName());
+			DialogUI dialog =  new DialogUI(user.getNickName(),user.getPic(), from);
+			DialogRegDelTool.RegDialog(from, dialog);
+			dialog.ShowMsg(msg);
+			dialog.LetsShack();
+		}
+}

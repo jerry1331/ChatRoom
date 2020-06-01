@@ -1,0 +1,16 @@
+package tools;
+
+import java.io.*;
+
+import message.*;
+
+// 此类用于解构消息
+public class ParseTool {
+
+	private static String readString(DataInputStream dins, int len) throws IOException {
+//		从流中读取固定长度的字节，并将其转换为字符串
+		byte[] data = new byte[len];
+		dins.readFully(data);
+		return new String(data).trim();
+	}
+}

@@ -1,0 +1,10 @@
+package tools;
+
+public class ParseTool {
+
+	private static String readString(DataInputStream dins, int len) throws IOException {
+		byte[] data = new byte[len];
+		dins.readFully(data);
+		return new String(data).trim();
+	}
+}

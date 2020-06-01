@@ -1,0 +1,18 @@
+package tools;
+
+import java.io.*;
+
+public class PackageTool {
+
+	private static void writeString(DataOutputStream dous, int len, String s) throws IOException {
+		byte[] data = s.getBytes();
+		if (data.length > len) {
+			throw new IOException("写入长度超长");
+		}
+		dous.write(data);
+		while (data.length < len) {
+			dous.writeByte('\0');
+			len--;
+		}
+	}
+}

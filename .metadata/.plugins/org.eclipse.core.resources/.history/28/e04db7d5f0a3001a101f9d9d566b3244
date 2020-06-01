@@ -1,0 +1,11 @@
+package friendlistUI;
+
+import database.*;
+
+public class ListPane {
+
+	public UserInfo findUserByID(int IDNum) {
+		
+		return null;
+	}
+}

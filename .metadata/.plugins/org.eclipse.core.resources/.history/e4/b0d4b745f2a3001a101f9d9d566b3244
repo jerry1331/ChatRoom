@@ -1,0 +1,13 @@
+package message;
+
+public class MsgAddFriendResp {
+	private byte state;
+
+	public byte getState() {
+		return state;
+	}
+
+	public void setState(byte state) {
+		this.state = state;
+	}
+}
