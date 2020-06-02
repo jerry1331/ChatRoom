@@ -39,7 +39,7 @@ public class FriendLabel extends JLabel{
 	//	头像
 	private int avatar;
 	//	
-	private boolean is_exit = true;
+	private boolean isExit = true;
 	
 	public int getID() {
 		return ID;
@@ -130,7 +130,7 @@ public class FriendLabel extends JLabel{
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
 				// TODO Auto-generated method stub
-				if(is_exit){
+				if(isExit){
 					setIcon(new ImageIcon("img/ListImg/memberBGOff.jpg"));
 				}
 				else{
@@ -148,37 +148,49 @@ public class FriendLabel extends JLabel{
 			public void mouseExited(MouseEvent arg0) {
 				// TODO Auto-generated method stub
 				setIcon(new ImageIcon("img/ListImg/memberBGOff.jpg"));
-				is_exit = true;
+				isExit = true;
 			}
 			
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
 				// TODO Auto-generated method stub
 				setIcon(new ImageIcon("img/ListImg/memberBGOn.jpg"));
-				is_exit = false;
+				isExit = false;
 			}
 			
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				// TODO Auto-generated method stub
-				/*
+				
 				DialogUI dialog;
-				if(DialogDB.dialogDB.containsKey(String.valueOf(IDNum))){
-					dialog = DialogDB.dialogDB.get(String.valueOf(IDNum));
+				if(DialogDB.dialogDB.containsKey(String.valueOf(ID))){
+					dialog = DialogDB.dialogDB.get(String.valueOf(ID));
+					// 抖动
 					dialog.LetsShake();
 				}
 				else{
 					dialog = new DialogUI(nickname,avatar,ID);
 					DialogRegDelTool.RegDialog(ID, dialog);
 				}
-				*/
+				
 			}
 		});
-		
-		
-		
-		
 	}
 	
+	/*
+	 * 当有来自某位好友的信息
+	 */
+	public void haveMSG(){
+//		System.out.println("have a msg");
+		setIcon(new ImageIcon("img/ListImg/memberBGMsg.jpg"));
+	}
 	
+	public void setState(byte state){
+		String tmpState;
+		if (state == 0)
+			tmpState = "在线";
+		else
+			tmpState = "离线";
+		jState.setText(tmpState);
+	}
 }

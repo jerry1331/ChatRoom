@@ -17,13 +17,12 @@ public class RecButton extends JButton {
 		setBackground(new Color(0x696969));
 		setForeground(Color.WHITE);
 		setBorder(null);
-		setFont(new Font("Microsoft JhengHei Light", Font.PLAIN, 25));
+		setFont(new Font("Microsoft YaHei Light", Font.PLAIN, 25));
 		setPreferredSize(new Dimension(170, 40));
 		setText(text);
 		setFocusPainted(false);// 设置不要焦点（文字的边框）
 
 		UIManager.put("Button.select", new Color(0x4D4D4D));
-		// 在Pressed里面写不顶用
 		addMouseListener(new MouseListener() {
 
 			@Override

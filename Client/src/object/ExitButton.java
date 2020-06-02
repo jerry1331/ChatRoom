@@ -9,27 +9,33 @@ import java.awt.event.MouseListener;
 import javax.swing.JButton;
 import javax.swing.UIManager;
 
-public class AddButton extends JButton{
+public class ExitButton extends JButton {
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 1L;
+	private boolean isExit = true;
 
-	public boolean is_exit = true;
-	
-	public AddButton() {
-		this.setPreferredSize(new Dimension(40, 40));
+	public ExitButton() {
+		this.setPreferredSize(new Dimension(40, 30));
 		this.setBackground(Color.DARK_GRAY);
-		this.setText("+");
-		this.setFont(new Font("Microsoft JhengHei", Font.PLAIN, 40));
+		this.setText("×");
+		this.setFont(new Font("Microsoft YaHei", Font.PLAIN, 20));
 		this.setFocusPainted(false);// 设置不要焦点（文字的边框）
 		this.setBorder(null);
 		this.setForeground(Color.WHITE);
 
 		// 设置按下的颜色
-		UIManager.put("Button.select", new Color(220, 220, 220));
+		UIManager.put("Button.select", new Color(240, 128, 128));
+		// 在Pressed里面写不顶用
+
 		this.addMouseListener(new MouseListener() {
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
 				// TODO Auto-generated method stub
+				if (!isExit)
+					System.exit(0);
 			}
 
 			@Override
@@ -41,14 +47,14 @@ public class AddButton extends JButton{
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
 				setBackground(Color.DARK_GRAY);
-				is_exit = true;
+				isExit = true;
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
-				setBackground(new Color(192, 192, 192));
-				is_exit = false;
+				setBackground(new Color(176, 23, 31));
+				isExit = false;
 			}
 
 			@Override
