@@ -50,28 +50,22 @@ public class FriendListPane extends JFrame {
 	}	
 	
 	public FriendListPane() {
-		
 		flu = this;
 		Figures.flu = this;
 		setBackground(Color.DARK_GRAY);
 
 		// 接收列表信息
-
 		try {
 			user = Figures.cc.getlist();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
+			
 		//设置参数
 		Figures.IDNum = user.getIDNum();
 		Figures.NickName = user.getNickName();
 		
-		
-		
-
 		// 设置无标题栏
 		setUndecorated(true);
 
@@ -96,8 +90,6 @@ public class FriendListPane extends JFrame {
 			}
 		});
 
-		
-		
 		setBounds(100, 100, 300, 700);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.DARK_GRAY);
@@ -123,33 +115,33 @@ public class FriendListPane extends JFrame {
 		contentPane.add(OwnInfo);
 		OwnInfo.setLayout(null);
 
-		JLabel lblWelcome = new JLabel("Welcome");
+		JLabel lblWelcome = new JLabel("欢迎");
 		lblWelcome.setForeground(Color.WHITE);
-		lblWelcome.setFont(new Font("Microsoft JhengHei Light", Font.PLAIN, 50));
+		lblWelcome.setFont(new Font("Microsoft YaHei Light", Font.PLAIN, 50));
 		lblWelcome.setBounds(1, 29, 226, 59);
 		OwnInfo.add(lblWelcome);
 
 		JLabel UserInfo = new JLabel(user.getNickName());
 		UserInfo.setForeground(Color.WHITE);
-		UserInfo.setFont(new Font("Microsoft JhengHei Light", Font.PLAIN, 35));
+		UserInfo.setFont(new Font("Microsoft YaHei Light", Font.PLAIN, 35));
 		UserInfo.setBounds(1, 86, 202, 47);
 		OwnInfo.add(UserInfo);
 
-		JLabel lblTest = new JLabel("ID number: " + user.getIDNum());
+		JLabel lblTest = new JLabel("ID: " + user.getIDNum());
 		lblTest.setForeground(Color.WHITE);
-		lblTest.setFont(new Font("Microsoft JhengHei Light", Font.PLAIN, 17));
+		lblTest.setFont(new Font("Microsoft YaHei Light", Font.PLAIN, 17));
 		lblTest.setBounds(1, 134, 137, 27);
 		OwnInfo.add(lblTest);
 
-		JLabel lblChatRoom = new JLabel("Chat Room");
+		JLabel lblChatRoom = new JLabel("聊天室");
 		lblChatRoom.setForeground(Color.WHITE);
-		lblChatRoom.setFont(new Font("Microsoft JhengHei Light", Font.PLAIN, 20));
+		lblChatRoom.setFont(new Font("Microsoft YaHei Light", Font.PLAIN, 20));
 		lblChatRoom.setBounds(1, 10, 137, 17);
 		OwnInfo.add(lblChatRoom);
 
-		JLabel lblContacts = new JLabel("CONTACTS");
+		JLabel lblContacts = new JLabel("好友");
 		lblContacts.setForeground(Color.WHITE);
-		lblContacts.setFont(new Font("Microsoft JhengHei Light", Font.PLAIN, 40));
+		lblContacts.setFont(new Font("Microsoft YaHei Light", Font.PLAIN, 40));
 		lblContacts.setBounds(15, 175, 226, 59);
 		contentPane.add(lblContacts);
 
@@ -171,7 +163,7 @@ public class FriendListPane extends JFrame {
 		panel.add(scrollPane);
 		
 		AddButton button = new AddButton();
-		button.setFont(new Font("Microsoft JhengHei", Font.PLAIN, 36));
+		button.setFont(new Font("Microsoft YaHei", Font.PLAIN, 36));
 		button.setBounds(236, 186,40, 40);
 		contentPane.add(button);
 		button.addActionListener(new ActionListener() {

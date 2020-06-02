@@ -80,18 +80,18 @@ public class AddFriendPane extends JFrame {
 
 		JLabel lblNikename = new JLabel("好友ID");
 		lblNikename.setForeground(Color.WHITE);
-		lblNikename.setFont(new Font("Microsoft JhengHei Light", Font.PLAIN, 25));
+		lblNikename.setFont(new Font("Microsoft YaHei Light", Font.PLAIN, 25));
 		lblNikename.setBounds(37, 167, 131, 42);
 		contentPane.add(lblNikename);
 
 		JLabel lblPassword = new JLabel("选择列表");
 		lblPassword.setForeground(Color.WHITE);
-		lblPassword.setFont(new Font("Microsoft JhengHei Light", Font.PLAIN, 25));
+		lblPassword.setFont(new Font("Microsoft YaHei Light", Font.PLAIN, 25));
 		lblPassword.setBounds(37, 212, 131, 42);
 		contentPane.add(lblPassword);
 
 		list_name = new JTextField();
-		list_name.setFont(new Font("Microsoft JhengHei Light", Font.PLAIN, 25));
+		list_name.setFont(new Font("Microsoft YaHei Light", Font.PLAIN, 25));
 		list_name.setColumns(10);
 		list_name.setBorder(null);
 		list_name.setBounds(176, 216, 219, 35);
@@ -114,7 +114,7 @@ public class AddFriendPane extends JFrame {
 		contentPane.add(mb);
 
 		Friend_ID = new JTextField();
-		Friend_ID.setFont(new Font("Microsoft JhengHei Light", Font.PLAIN, 25));
+		Friend_ID.setFont(new Font("Microsoft YaHei Light", Font.PLAIN, 25));
 		Friend_ID.setColumns(10);
 		Friend_ID.setBounds(176, 173, 219, 35);
 		Friend_ID.setBorder(null);
@@ -160,16 +160,16 @@ public class AddFriendPane extends JFrame {
 			}
 		});
 
-		JLabel lblRegisterNewUser = new JLabel("Add Friend");
+		JLabel lblRegisterNewUser = new JLabel("添加好友");
 		lblRegisterNewUser.setForeground(Color.WHITE);
-		lblRegisterNewUser.setFont(new Font("Microsoft JhengHei Light", Font.PLAIN, 57));
+		lblRegisterNewUser.setFont(new Font("Microsoft YaHei Light", Font.PLAIN, 57));
 		lblRegisterNewUser.setBackground(Color.WHITE);
 		lblRegisterNewUser.setBounds(37, 60, 494, 80);
 		contentPane.add(lblRegisterNewUser);
 
-		JLabel label_1 = new JLabel("Chat Room");
+		JLabel label_1 = new JLabel("聊天室");
 		label_1.setForeground(Color.WHITE);
-		label_1.setFont(new Font("Microsoft JhengHei Light", Font.PLAIN, 20));
+		label_1.setFont(new Font("Microsoft YaHei Light", Font.PLAIN, 20));
 		label_1.setBounds(37, 20, 165, 35);
 		contentPane.add(label_1);
 		setResizable(false);
@@ -177,13 +177,13 @@ public class AddFriendPane extends JFrame {
 	}
 
 	public void showResult(int result) {
-		System.out.println("To show Result" + result);
+		System.out.println("Result:" + result);
 		if (result == 0) {
 			JOptionPane.showMessageDialog(null, "添加成功");
 			Figures.flu.setAdding(false);
 			this.dispose();
 		} else if (result == 1){
-			JOptionPane.showMessageDialog(null, "查无此人", "Error", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "该用户不存在", "Error", JOptionPane.ERROR_MESSAGE);
 		} else if (result == 2) {
 			JOptionPane.showMessageDialog(null, "已有此好友", "Error", JOptionPane.ERROR_MESSAGE);
 		} else {
