@@ -18,12 +18,12 @@ public class DialogTool {
 		if(DialogDB.dialogDB.containsKey(String.valueOf(from))){
 			DialogUI dialog = DialogDB.dialogDB.get(String.valueOf(from));
 			dialog.ShowMsg(msg);
-			//dialog.LetsShack();
+			//dialog.LetsShake();
 		}
 		else{
 			UserInfo user = Figures.list.findUserByID(from);
-			
-			DialogUI dialog =  new DialogUI();
+			//
+			DialogUI dialog =  new DialogUI(null, from, from);
 			DialogRegDelTool.RegDialog(from, dialog);
 			dialog.ShowMsg(msg);
 		}
@@ -37,6 +37,5 @@ public class DialogTool {
 			System.out.println("·¢ËÍÏûÏ¢Ê§°Ü");
 			e.printStackTrace();
 		}
-		
 	}
 }
