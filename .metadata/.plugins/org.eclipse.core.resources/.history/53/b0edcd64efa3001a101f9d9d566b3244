@@ -1,5 +1,0 @@
-package database;
-
-public class DialogDB {
-	public static Map<String, DialogUI> dialogDB = new HashMap<String, DialogUI>();
-}

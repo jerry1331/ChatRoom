@@ -1,7 +1,0 @@
-package message;
-
-import java.io.*;
-
-public class MsgLogin extends MsgHead {
-
-}
