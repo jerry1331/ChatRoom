@@ -11,14 +11,13 @@ import javax.swing.UIManager;
 
 public class AddButton extends JButton{
 	private static final long serialVersionUID = 1L;
-
-	public boolean is_exit = true;
+	public boolean isExit = true;
 	
 	public AddButton() {
 		this.setPreferredSize(new Dimension(40, 40));
 		this.setBackground(Color.DARK_GRAY);
 		this.setText("+");
-		this.setFont(new Font("Microsoft JhengHei", Font.PLAIN, 40));
+		this.setFont(new Font("Microsoft YaHei", Font.PLAIN, 40));
 		this.setFocusPainted(false);// 设置不要焦点（文字的边框）
 		this.setBorder(null);
 		this.setForeground(Color.WHITE);
@@ -41,14 +40,14 @@ public class AddButton extends JButton{
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
 				setBackground(Color.DARK_GRAY);
-				is_exit = true;
+				isExit = true;
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
 				setBackground(new Color(192, 192, 192));
-				is_exit = false;
+				isExit = false;
 			}
 
 			@Override

@@ -1,6 +1,6 @@
 package msg;
 
-public class MsgAddFriendResp extends MsgHead{
+public class MsgAddFriendResp extends MsgHead {
 	private byte state;
 
 	public byte getState() {

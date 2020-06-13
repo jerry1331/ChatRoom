@@ -10,27 +10,29 @@ import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+/*
+ * 	生成单个好友分组
+ */
+
 public class ListName extends JLabel {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private JLabel lb_Name;
-	private boolean is_click = false;
-	/**
-	 * Create the panel.
-	 */
+	private JLabel jName;
+	private boolean isClick = false;
+	
 	public ListName(String name, JLabel[] users) {
 		setBackground(Color.DARK_GRAY);
-		lb_Name = new JLabel();
-		lb_Name.setForeground(Color.WHITE);
-		lb_Name.setBounds(new Rectangle(20, 10, 95, 20));
-		lb_Name.setFont(new Font("Microsoft JhengHei Light", Font.PLAIN, 18));
-		lb_Name.setText(name);
-		this.add(lb_Name);
+		jName = new JLabel();
+		jName.setForeground(Color.WHITE);
+		jName.setBounds(new Rectangle(20, 10, 95, 20));
+		jName.setFont(new Font("Microsoft YaHei Light", Font.PLAIN, 18));
+		jName.setText(name);
+		this.add(jName);
 
-		setIcon(new ImageIcon("img/ListImg/ListOff.jpg"));
+		setIcon(new ImageIcon("img/ListOff.jpg"));
 		setSize(new Dimension(272, 50));
 		for (int i = 0; i < users.length; i++) {
 			users[i].setVisible(false);
@@ -51,40 +53,40 @@ public class ListName extends JLabel {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
-				if(is_click){
-					setIcon(new ImageIcon("img/ListImg/ListOn.jpg"));
+				if(isClick){
+					setIcon(new ImageIcon("img/ListOn.jpg"));
 				}
 				else{
-					setIcon(new ImageIcon("img/ListImg/ListOff.jpg"));
+					setIcon(new ImageIcon("img/ListOff.jpg"));
 				}
 			}
 			
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
-				if(is_click){
+				if(isClick){
 
-					setIcon(new ImageIcon("img/ListImg/ListOnEnter.jpg"));
+					setIcon(new ImageIcon("img/ListOnEnter.jpg"));
 				}
 				else{
-					setIcon(new ImageIcon("img/ListImg/ListOffEnter.jpg"));
+					setIcon(new ImageIcon("img/ListOffEnter.jpg"));
 				}
 			}
 			
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				// TODO Auto-generated method stub
-				is_click = !is_click;
-				if(is_click){
+				isClick = !isClick;
+				if(isClick){
 					for (int i = 0; i < users.length; i++) {
 						users[i].setVisible(true);
 					}
-					setIcon(new ImageIcon("img/ListImg/ListOnEnter.jpg"));
+					setIcon(new ImageIcon("img/ListOnEnter.jpg"));
 				} else {
 					for (int i = 0; i < users.length; i++) {
 						users[i].setVisible(false);
 					}
-					setIcon(new ImageIcon("img/ListImg/ListOffEnter.jpg"));
+					setIcon(new ImageIcon("img/ListOffEnter.jpg"));
 				}
 			}
 		});

@@ -1,9 +1,9 @@
 package dataBase;
 
 import client.ChatClient;
+import friendListUI.ListPane;
 import friendListUI.AddFriendUI;
 import friendListUI.FriendListUI;
-import friendListUI.ListPane;
 
 public class Figures {
 	public static final int ServerID = 2000000000;// ·þÎñÆ÷µÄID

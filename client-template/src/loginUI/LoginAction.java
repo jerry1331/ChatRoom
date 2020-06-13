@@ -13,7 +13,6 @@ import client.ChatClient;
 import dataBase.Figures;
 import friendListUI.FriendListUI;
 
-
 /**
  * LoginAction
  * 登陆期间按键监听器
@@ -72,14 +71,14 @@ public class LoginAction implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		JButton jb = (JButton) e.getSource();
 		//若按下的按键为登陆
-		if (jb.getText().equals("Login")) {
+		if (jb.getText().equals("登录")) {
 			int userid = Integer.valueOf(userid_field.getText());
 			if (userid_field.getText().equals("")) {//若输入ID号为空
-				JOptionPane.showMessageDialog(null, "ID不为空", "Error", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "ID不能为空", "Error", JOptionPane.ERROR_MESSAGE);
 			} else {
 				String password = new String(password_field.getPassword());
 				if (password.equals(""))
-					JOptionPane.showMessageDialog(null, "密码不为空", "Error", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "密码不能为空", "Error", JOptionPane.ERROR_MESSAGE);
 				else{
 					int result = cc.Login(userid, password) ;
 					if(result == 0){//若密码正确
@@ -100,7 +99,7 @@ public class LoginAction implements ActionListener {
 			}
 		} 
 		//若按下的按键为注册按键
-		else if (jb.getText().equals("Register")) {
+		else if (jb.getText().equals("注册")) {
 			//System.out.println("One click");
 			if (!is_Registering) {
 				new RegisterUI(this,cc); // 将当前监听器传过去

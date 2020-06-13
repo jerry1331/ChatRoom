@@ -1,6 +1,7 @@
 package database;
 
 import client.*;
+import friendlistUI.ListPane;
 import friendlistUI.*;
 
 public class Figures {

@@ -29,7 +29,7 @@ public class DialogUI extends JFrame {
 	private int xx, yy;
 	private boolean isDraging = false;
 
-	private String nikeName;
+	private String nickName;
 	private int bodyNum;
 	private JTextArea MsgArea;
 	private JTextArea sendArea;
@@ -39,21 +39,13 @@ public class DialogUI extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
-	public int getBodyNum() {
-		return bodyNum;
-	}
-
-	public void setBodyNum(int bodyNum) {
-		this.bodyNum = bodyNum;
-	}
-
-	public DialogUI(String nikeName, int bodyPic, int bodyNum) {
-		this.nikeName = nikeName;
-		this.bodyNum = bodyNum;
+	public DialogUI(String nickName, int bodyPic, int bodyNum) {
+		this.nickName = nickName;
+		this.setBodyNum(bodyNum);
 
 		// 设置无标题栏
 		setUndecorated(true);
-
+		// 接收鼠标点击
 		this.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
 				isDraging = true;
@@ -65,6 +57,7 @@ public class DialogUI extends JFrame {
 				isDraging = false;
 			}
 		});
+		// 接收鼠标动作
 		this.addMouseMotionListener(new MouseMotionAdapter() {
 			public void mouseDragged(MouseEvent e) {
 				if (isDraging) {
@@ -75,7 +68,7 @@ public class DialogUI extends JFrame {
 			}
 		});
 
-		setBounds(100, 100, 653, 494);
+		setBounds(100, 100, 653, 550);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.DARK_GRAY);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -83,7 +76,6 @@ public class DialogUI extends JFrame {
 		contentPane.setLayout(null);
 
 		// 设置自制按钮
-
 		CloseButton eb = new CloseButton(this);
 		eb.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -98,12 +90,11 @@ public class DialogUI extends JFrame {
 		contentPane.add(mb);
 
 		JLabel NickName = new JLabel("");
-		NickName.setFont(new Font("Microsoft JhengHei Light", Font.PLAIN, 30));
+		NickName.setFont(new Font("Microsoft YaHei Light", Font.PLAIN, 30));
 		NickName.setForeground(Color.WHITE);
 		NickName.setBounds(31, 93, 200, 44);
-		NickName.setText(nikeName);
+		NickName.setText(nickName);
 		contentPane.add(NickName);
-
 
 		MsgArea = new JTextArea();
 		JScrollPane scrollPane = new JScrollPane(MsgArea);
@@ -111,7 +102,7 @@ public class DialogUI extends JFrame {
 		MsgArea.setFont(new Font("Microsoft YaHei UI Light", Font.PLAIN, 20));
 		MsgArea.setBackground(Color.LIGHT_GRAY);
 		scrollPane.setBounds(0, 147, 653, 152);
-		scrollPane.getVerticalScrollBar().setUI(new ScrollBarUI()); 
+		scrollPane.getVerticalScrollBar().setUI(new ScrollBarUI());
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);// 不显示水平滚动条；
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
 		scrollPane.setBorder(null);
@@ -121,7 +112,7 @@ public class DialogUI extends JFrame {
 		JScrollPane sendscrollPane = new JScrollPane(sendArea);
 		sendArea.setFont(new Font("Microsoft YaHei UI Light", Font.PLAIN, 20));
 		sendArea.setBackground(Color.LIGHT_GRAY);
-		sendscrollPane.getVerticalScrollBar().setUI(new ScrollBarUI()); 
+		sendscrollPane.getVerticalScrollBar().setUI(new ScrollBarUI());
 		sendscrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);// 不显示水平滚动条；
 		sendscrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
 		sendscrollPane.setBorder(null);
@@ -152,10 +143,10 @@ public class DialogUI extends JFrame {
 		});
 		Close.setBounds(398, 440, 165, 40);
 		contentPane.add(Close);
-		
-		JLabel lblUserInfor = new JLabel("User Infor");
+
+		JLabel lblUserInfor = new JLabel("聊天窗口");
 		lblUserInfor.setForeground(Color.WHITE);
-		lblUserInfor.setFont(new Font("Microsoft JhengHei Light", Font.PLAIN, 60));
+		lblUserInfor.setFont(new Font("Microsoft YaHei Light", Font.PLAIN, 60));
 		lblUserInfor.setBounds(31, 10, 513, 91);
 		contentPane.add(lblUserInfor);
 
@@ -164,27 +155,9 @@ public class DialogUI extends JFrame {
 	}
 
 	/*
-	 * 用于显示对方发送来的消息
+	 * 抖动起来
 	 */
-	public void ShowMsg(String msg) {
-		String text = MsgArea.getText();
-		text += nikeName + " Says:" + msg + "\r\n";
-		MsgArea.setText(text);
-	}
-
-	/*
-	 * 用于显示已经发送的消息
-	 */
-	public void SendMsg(String msg) {
-		String text = MsgArea.getText();
-		text += Figures.NickName + " Says:" + msg + "\r\n";
-		MsgArea.setText(text);
-	}
-
-	/*
-	 * 抖动起来吧23333
-	 */
-	public void LetsShack() {
+	public void LetsShake() {
 		int x = this.getX();
 		int y = this.getY();
 		for (int i = 0; i < 20; i++) {
@@ -202,6 +175,31 @@ public class DialogUI extends JFrame {
 				e1.printStackTrace();
 			}
 		}
+	}
 
+	public int getBodyNum() {
+		return bodyNum;
+	}
+
+	public void setBodyNum(int bodyNum) {
+		this.bodyNum = bodyNum;
+	}
+
+	/*
+	 * 用于显示对方发送来的消息
+	 */
+	public void ShowMsg(String msg) {
+		String text = MsgArea.getText();
+		text += nickName + " : " + msg + "\r\n";
+		MsgArea.setText(text);
+	}
+
+	/*
+	 * 用于显示已经发送的消息
+	 */
+	public void SendMsg(String msg) {
+		String text = MsgArea.getText();
+		text += Figures.NickName + " : " + msg + "\r\n";
+		MsgArea.setText(text);
 	}
 }

@@ -12,14 +12,13 @@ import javax.swing.UIManager;
 
 public class MinimizeButton extends JButton {
 	private static final long serialVersionUID = 1L;
-
-	private boolean is_exit = true;
+	private boolean isExit = true;
 
 	public MinimizeButton(JFrame jf) {
 		this.setPreferredSize(new Dimension(40, 30));
 		this.setBackground(Color.DARK_GRAY);
 		this.setText("-");
-		this.setFont(new Font("Microsoft JhengHei", Font.PLAIN, 20));
+		this.setFont(new Font("Microsoft YaHei", Font.PLAIN, 20));
 		this.setFocusPainted(false);// 设置不要焦点（文字的边框）
 		this.setBorder(null);
 		this.setForeground(Color.WHITE);
@@ -33,7 +32,7 @@ public class MinimizeButton extends JButton {
 			@Override
 			public void mouseReleased(MouseEvent e) {
 				// TODO Auto-generated method stub
-				if (!is_exit) {
+				if (!isExit) {
 					jf.setExtendedState(JFrame.ICONIFIED);
 				}
 			}
@@ -47,14 +46,14 @@ public class MinimizeButton extends JButton {
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
 				setBackground(Color.DARK_GRAY);
-				is_exit = true;
+				isExit = true;
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
 				setBackground(new Color(192, 192, 192));
-				is_exit = false;
+				isExit = false;
 			}
 
 			@Override

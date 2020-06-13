@@ -1,9 +1,6 @@
 package msg;
 
-/*
- * µÇÂ½ÏûÏ¢Ìå
- */
-public class MsgLogin extends MsgHead {
+public class MsgLogin extends MsgHead{
 	private String pwd;
 
 	public String getPwd() {

@@ -1,35 +1,27 @@
 package dataBase;
 
-/*
- * 用户基本信息
- */
 public class UserInfo {
-	/*
-	 * 用户基本信息
-	 */
-
-	private int IDNum;// 保存该用户的ID
-	private String NickName;// 保存该用户的昵称
-	private String PassWord;// 保存该用户的IP
-	private int Pic;
+	private int IDNum;// 保存该用ID号
+	private String nickName;// 保存该用户的昵称
+	private int avatar;
 
 	/*
 	 * 用户好友信息
 	 */
 
-	private byte listCount;// 保存有多少组好友
+	private byte collectionCount;// 保存有多少组好友
 	private String ListName[];// 保存每个分组的名称
 	private byte[] bodyCount;// 每组有多少个人
-	private int bodyNum[][];// 每个好友的ID
-	private int bodypic[][];//好友头像
-	private String nikeName[][];// 每个好友的昵称
+	private int bodyNum[][];// 每个好友ID
+	private int bodypic[][];// 好友头像
+	private String bodyName[][];// 每个好友的昵称
 
-	public byte getListCount() {
-		return listCount;
+	public byte getCollectionCount() {
+		return collectionCount;
 	}
 
-	public void setListCount(byte listCount) {
-		this.listCount = listCount;
+	public void setCollectionCount(byte listCount) {
+		this.collectionCount = listCount;
 	}
 
 	public String[] getListName() {
@@ -56,12 +48,12 @@ public class UserInfo {
 		this.bodyNum = bodyNum;
 	}
 
-	public String[][] getNikeName() {
-		return nikeName;
+	public String[][] getBodyName() {
+		return bodyName;
 	}
 
-	public void setNikeName(String[][] nikeName) {
-		this.nikeName = nikeName;
+	public void setBodyName(String[][] bodyName) {
+		this.bodyName = bodyName;
 	}
 
 	public int getIDNum() {
@@ -73,26 +65,11 @@ public class UserInfo {
 	}
 
 	public String getNickName() {
-		return NickName;
+		return nickName;
 	}
 
-	public void setNickName(String nickName) {
-		NickName = nickName;
-	}
-
-	public String getPassWord() {
-		return PassWord;
-	}
-
-	public void setPassWord(String passWord) {
-		PassWord = passWord;
-	}
-
-	public boolean equals(UserInfo compare) {
-		if (compare.getIDNum() == IDNum && compare.getPassWord().equals(PassWord)) {
-			return true;
-		}
-		return false;
+	public void setNickName(String nick) {
+		nickName = nick;
 	}
 
 	public int[][] getBodypic() {
@@ -103,11 +80,18 @@ public class UserInfo {
 		this.bodypic = bodypic;
 	}
 
-	public int getPic() {
-		return Pic;
+	public int getAvatar() {
+		return avatar;
 	}
 
-	public void setPic(int pic) {
-		Pic = pic;
+	public void setAvatar(int avatar) {
+		this.avatar = avatar;
+	}
+
+	public boolean equals(UserInfo compare) {
+		if (compare.getIDNum() == IDNum) {
+			return true;
+		}
+		return false;
 	}
 }

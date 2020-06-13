@@ -1,6 +1,6 @@
 package msg;
 
-public class MsgAddFriend extends MsgHead{
+public class MsgAddFriend extends MsgHead {
 	private int add_ID;
 	private String list_name;
 
@@ -19,5 +19,4 @@ public class MsgAddFriend extends MsgHead{
 	public void setList_name(String list_name) {
 		this.list_name = list_name;
 	}
-
 }

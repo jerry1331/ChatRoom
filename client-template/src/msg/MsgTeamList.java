@@ -1,6 +1,6 @@
 package msg;
 
-public class MsgTeamList extends MsgHead {
+public class MsgTeamList extends MsgHead{
 	private String UserName;
 	private int pic;
 	private byte listCount;

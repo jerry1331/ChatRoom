@@ -27,12 +27,12 @@ public class ListPane extends JPanel {
 	}
 
 	private void initialize() {
-		listCount = list.getListCount();
+		listCount = list.getCollectionCount();
 		String[] listName = list.getListName();
 		bodyCount = list.getBodyCount();
 		int[][] bodyNum = list.getBodyNum();
 		int[][] bodyPic = list.getBodypic();
-		String[][] nikeName = list.getNikeName();
+		String[][] nikeName = list.getBodyName();
 		state = list.getBodyState();
 		ListName[] list = new ListName[listCount];
 		user = new Member[listCount][];
@@ -67,7 +67,7 @@ public class ListPane extends JPanel {
 				if(user[i][j].getMemberIDNum() == IDNum){
 					result.setIDNum(IDNum);
 					result.setNickName(user[i][j].getNickname());
-					result.setPic(user[i][j].getPic());
+					result.setAvatar(user[i][j].getPic());
 					break;
 				}
 			}
@@ -86,7 +86,7 @@ public class ListPane extends JPanel {
 	}
 	
 	public void Refresh_List(ListInfo new_list){
-		byte new_listCount = new_list.getListCount();
+		byte new_listCount = new_list.getCollectionCount();
 		byte[] new_bodyCount = new_list.getBodyCount();
 		byte[][] state = new_list.getBodyState();
 		boolean has_new_member = false;

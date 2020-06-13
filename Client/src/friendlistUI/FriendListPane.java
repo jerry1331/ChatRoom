@@ -20,6 +20,7 @@ import javax.swing.border.EmptyBorder;
 
 import database.Figures;
 import database.ListInfo;
+import friendlistUI.ListPane;
 import object.AddButton;
 import object.ExitButton;
 import object.MinimizeButton;
@@ -98,7 +99,7 @@ public class FriendListPane extends JFrame {
 		setResizable(false);
 		contentPane.setLayout(null);
 
-		// 设置自制按钮
+		// 自定义按钮
 
 		ExitButton eb = new ExitButton();
 		int windowWeith = this.getWidth();
@@ -115,16 +116,10 @@ public class FriendListPane extends JFrame {
 		contentPane.add(OwnInfo);
 		OwnInfo.setLayout(null);
 
-		JLabel lblWelcome = new JLabel("欢迎");
-		lblWelcome.setForeground(Color.WHITE);
-		lblWelcome.setFont(new Font("Microsoft YaHei Light", Font.PLAIN, 50));
-		lblWelcome.setBounds(1, 29, 226, 59);
-		OwnInfo.add(lblWelcome);
-
 		JLabel UserInfo = new JLabel(user.getNickName());
 		UserInfo.setForeground(Color.WHITE);
 		UserInfo.setFont(new Font("Microsoft YaHei Light", Font.PLAIN, 35));
-		UserInfo.setBounds(1, 86, 202, 47);
+		UserInfo.setBounds(1, 20, 202, 47);
 		OwnInfo.add(UserInfo);
 
 		JLabel lblTest = new JLabel("ID: " + user.getIDNum());
@@ -154,9 +149,9 @@ public class FriendListPane extends JFrame {
 
 		list = new ListPane(user);
 		scrollPane = new JScrollPane(list);
-		Figures.list = list;//设置list
+		Figures.list = list;	//设置list
 		scrollPane.getVerticalScrollBar().setUI(new ScrollBarUI()); 
-		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);// 不显示水平滚动条；
+		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);	// 不显示水平滚动条；
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
 		scrollPane.setBorder(null);
 		scrollPane.setBounds(0, 0, 272, 420);
@@ -164,7 +159,7 @@ public class FriendListPane extends JFrame {
 		
 		AddButton button = new AddButton();
 		button.setFont(new Font("Microsoft YaHei", Font.PLAIN, 36));
-		button.setBounds(236, 186,40, 40);
+		button.setBounds(236, 186, 40, 40);
 		contentPane.add(button);
 		button.addActionListener(new ActionListener() {
 			
@@ -192,5 +187,18 @@ public class FriendListPane extends JFrame {
 		 * 开启从服务器不间断获取信息
 		 */
 		Figures.cc.start();
+	}
+	public void updatelist(ListPane new_list){
+//		scrollPane.updateUI();
+//		scrollPane.setBorder(null);
+//		scrollPane.setBounds(0, 0, 272, 420);
+//		scrollPane = new JScrollPane(new_list);
+//		Figures.list = list;//设置list
+//		scrollPane.getVerticalScrollBar().setUI(new ScrollBarUI()); 
+//		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);// 不显示水平滚动条；
+//		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+//		scrollPane.setBorder(null);
+//		scrollPane.setBounds(0, 0, 272, 420);
+//		panel.add(scrollPane);
 	}
 }

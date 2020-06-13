@@ -1,8 +1,6 @@
 package msg;
 
-/*
- * 消息头为所有的消息的共用体
- */
+// 消息头为所有的消息的共用体
 public class MsgHead {
 	private int totalLen;
 	private byte type;
@@ -40,5 +38,4 @@ public class MsgHead {
 	public void setSrc(int src) {
 		this.src = src;
 	}
-
 }

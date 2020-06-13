@@ -18,73 +18,85 @@ import javax.swing.JLabel;
 import java.awt.Dimension;
 import java.awt.Font;
 
-
-public class FriendLabel extends JLabel{
+/*
+ * 这里把列表中的每一个用户包装成一个JLabel
+ * 方便放在JScollPane里面
+ * 
+ */
+public class FriendLabel extends JLabel {
 
 	private static final long serialVersionUID = 1L;
-	//	容器
-	public JPanel jContainer = new JPanel();
-	//	ID
-	private JLabel jID = null;
-	//	昵称
-	private JLabel jNickName = null;
-	//	状态
-	private JLabel jState;
+	public JPanel jPanel = new JPanel(); // 模板容器；
+	private JLabel lb_nickName = null; // 显示昵称；
+	private JLabel lb_IDnum = null; // 显示ID号
+	private boolean is_exit = true;
+	private int MemberIDNum;
+	private JLabel lb_State;
 	
-	
-	//	ID
-	private int ID;
-	//	昵称
-	private String nickname;
-	//	头像
-	private int avatar;
-	//	
-	private boolean isExit = true;
-	
-	public int getID() {
-		return ID;
-	}
-	public void setID(int iD) {
-		ID = iD;
-	}
-	public String getNickName() {
+	public String getNickname() {
 		return nickname;
 	}
-	public void setNickName(String nickname) {
+
+	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
-	//	获取头像
-	public int getAvatar() {
-		return avatar;
+
+	private int pic;
+	private String nickname;
+	public int getPic() {
+		return pic;
 	}
-	//	设置头像
-	public void setAvatar(int avatar) {
-		this.avatar = avatar;
+
+	public void setPic(int pic) {
+		this.pic = pic;
 	}
-	
-	public FriendLabel(int ID, String nickname, int avatar, byte state) {
-		this.setID(ID);
-		this.avatar = avatar;
+
+	public int getMemberIDNum() {
+		return MemberIDNum;
+	}
+
+	public void setMemberIDNum(int memberIDNum) {
+		MemberIDNum = memberIDNum;
+	}
+
+	public FriendLabel(int picNum, String nickname, int IDNum, byte state) {
+		MemberIDNum = IDNum;
+		pic = picNum;
 		this.nickname = nickname;
 		setBackground(Color.darkGray);
-		
 		/*
-		 * 设置ID
+		 * 设置用户名
 		 */
-		this.jID = new JLabel();
-		this.jID.setForeground(Color.WHITE);
-		this.jID.setBounds(new Rectangle(70, 38, 150, 20));
-		this.jID.setFont(new Font("Microsoft YaHei", Font.PLAIN, 15));
-		this.jID.setText("ID:(" + ID + ")");
-		
+		lb_nickName = new JLabel();
+		lb_nickName.setForeground(Color.WHITE);
+		lb_nickName.setBounds(new Rectangle(70, 10, 95, 20));
+		lb_nickName.setFont(new Font("Microsoft JhengHei Light", Font.PLAIN, 18));
+		lb_nickName.setText(nickname);
+
 		/*
-		 * 设置昵称
+		 * 设置用户账号
 		 */
-		this.jNickName = new JLabel();
-		this.jNickName.setForeground(Color.WHITE);
-		this.jNickName.setBounds(new Rectangle(70, 10, 95, 20));
-		this.jNickName.setFont(new Font("Microsoft YaHei Light", Font.PLAIN, 18));
-		this.jNickName.setText(nickname);
+		lb_IDnum = new JLabel();
+		lb_IDnum.setForeground(Color.WHITE);
+		lb_IDnum.setBounds(new Rectangle(70, 38, 150, 20));
+		lb_IDnum.setFont(new Font("Microsoft JhengHei", Font.PLAIN, 15));
+		lb_IDnum.setText("IDNum:(" + IDNum + ")");
+
+		/*
+		 * 设置是否在线
+		 */
+		String SState;
+		if (state == 0)
+			SState = "OnLine";
+		else
+			SState = "OffLine";
+		lb_State = new JLabel();
+		lb_State.setText(SState);
+		lb_State.setForeground(Color.WHITE);
+		lb_State.setFont(new Font("Microsoft JhengHei Light", Font.PLAIN, 18));
+		lb_State.setBounds(new Rectangle(70, 10, 95, 20));
+		lb_State.setBounds(180, 10, 95, 20);
+		add(lb_State);
 
 		/*
 		 * 设置用户头像
@@ -92,49 +104,29 @@ public class FriendLabel extends JLabel{
 		JButton UserIcon = new JButton();
 		UserIcon.setBorder(null);
 		UserIcon.setBounds(10, 10, 50, 50);
-		UserIcon.setIcon(new ImageIcon("img/AvatarImg/" + avatar + ".jpg"));
+		UserIcon.setIcon(new ImageIcon("img/AvatarImg/" + pic + ".jpg"));
 
 		/*
-		 * 设置是否在线
+		 * 增加背景 这里必须这么干
 		 */
-		String SState;
-		if (state == 0)
-			SState = "在线";
-		else
-			SState = "离线";
-		this.jState = new JLabel();
-		this.jState.setText(SState);
-		this.jState.setForeground(Color.WHITE);
-		this.jState.setFont(new Font("Microsoft YaHei Light", Font.PLAIN, 18));
-		this.jState.setBounds(new Rectangle(70, 10, 95, 20));
-		this.jState.setBounds(180, 10, 95, 20);
-		add(this.jState);
-
-		/*
-		 * 渲染容器
-		 */
-		setIcon(new ImageIcon("img/memberBGOff.jpg"));
+		setIcon(new ImageIcon("img/ListImg/memberBGOff.jpg"));
 
 		setSize(new Dimension(272, 70));
 		setLayout(null);
 		add(UserIcon);
-		add(jID);
-		add(jNickName);
-		
-		/*
-		 * 增加鼠标事件
-		 */
+		add(lb_nickName);
+		add(lb_IDnum);
 		
 		addMouseListener(new MouseListener() {
 			
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
 				// TODO Auto-generated method stub
-				if(isExit){
-					setIcon(new ImageIcon("img/memberBGOff.jpg"));
+				if(is_exit){
+					setIcon(new ImageIcon("img/ListImg/memberBGOff.jpg"));
 				}
 				else{
-					setIcon(new ImageIcon("img/memberBGOn.jpg"));
+					setIcon(new ImageIcon("img/ListImg/memberBGOn.jpg"));
 				}
 				
 			}
@@ -147,50 +139,51 @@ public class FriendLabel extends JLabel{
 			@Override
 			public void mouseExited(MouseEvent arg0) {
 				// TODO Auto-generated method stub
-				setIcon(new ImageIcon("img/memberBGOff.jpg"));
-				isExit = true;
+				setIcon(new ImageIcon("img/ListImg/memberBGOff.jpg"));
+				is_exit = true;
 			}
 			
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
 				// TODO Auto-generated method stub
-				setIcon(new ImageIcon("img/memberBGOn.jpg"));
-				isExit = false;
+				setIcon(new ImageIcon("img/ListImg/memberBGOn.jpg"));
+				is_exit = false;
 			}
 			
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				// TODO Auto-generated method stub
-				
 				DialogUI dialog;
-				if(DialogDB.dialogDB.containsKey(String.valueOf(ID))){
-					dialog = DialogDB.dialogDB.get(String.valueOf(ID));
-					// 抖动
+				if(DialogDB.dialogDB.containsKey(String.valueOf(IDNum))){
+					dialog = DialogDB.dialogDB.get(String.valueOf(IDNum));
 					dialog.LetsShake();
 				}
 				else{
-					dialog = new DialogUI(nickname,avatar,ID);
-					DialogRegDelTool.RegDialog(ID, dialog);
+					dialog = new DialogUI(nickname,picNum,IDNum);
+					DialogRegDelTool.RegDialog(IDNum, dialog);
 				}
-				
 			}
 		});
+		
+		
+		
 	}
-	
+
 	/*
-	 * 当有来自某位好友的信息
+	 * 当有来自这个人的信息
 	 */
-	public void haveMSG(){
-//		System.out.println("have a msg");
-		setIcon(new ImageIcon("img/memberBGMsg.jpg"));
+	public void hav_msg(){
+//		System.out.println("Have_A_MSG");
+		setIcon(new ImageIcon("img/ListImg/memberBGMsg.jpg"));
 	}
 	
-	public void setState(byte state){
-		String tmpState;
+	public void set_state(byte state){
+		String SState;
 		if (state == 0)
-			tmpState = "在线";
+			SState = "OnLine";
 		else
-			tmpState = "离线";
-		jState.setText(tmpState);
+			SState = "OffLine";
+		lb_State.setText(SState);
 	}
+	
 }

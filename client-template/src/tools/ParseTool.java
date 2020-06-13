@@ -1,38 +1,19 @@
 package tools;
 
-import java.io.ByteArrayInputStream;
-import java.io.DataInputStream;
-import java.io.IOException;
+import java.io.*;
 
 import msg.*;
 
-/*
- * 此类用于解构消息
- */
+// 此类用于解构消息
 public class ParseTool {
 
-	/*
-	 * 从流中读取固定长度的字节，并将其转换为字符串
-	 * 
-	 * @param dins: 读取的流对象
-	 * 
-	 * @param len: 读取的字节长度
-	 * 
-	 * @return 转换后的字符串
-	 */
 	private static String readString(DataInputStream dins, int len) throws IOException {
+//		从流中读取固定长度的字节，并将其转换为字符串
 		byte[] data = new byte[len];
 		dins.readFully(data);
 		return new String(data).trim();
 	}
-
-	/*
-	 * 此方法用于解构消息
-	 * 
-	 * @param data 字节信息
-	 * 
-	 * @return 消息解构后赋值的MsgHead的子类
-	 */
+	
 	public static MsgHead parseMsg(byte[] data) throws IOException {
 		int totalLen = data.length + 4; // 之前已经读取了4个字节的长度信息
 		ByteArrayInputStream bins = new ByteArrayInputStream(data);

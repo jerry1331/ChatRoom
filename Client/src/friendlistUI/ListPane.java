@@ -3,83 +3,71 @@ package friendlistUI;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
+import database.Figures;
+import database.ListInfo;
 import database.UserInfo;
-import database.*;
 
 /*
- * 这个是好友列表的面板
- * 构造函数需要传入好友列表信息（ListInfo list）
+ * 这个是好友列表的JPabel
+ * 构造函数需要传入好友列表信息
  */
-public class ListPane extends JPanel{
+public class ListPane extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private ListInfo listInfo;
-	
-	//	分组好友
-	private FriendLabel friends[][];
-	
-	private byte collectionCount;
+	private ListInfo list;
+	private FriendLabel user[][];
+	private byte listCount ;
 	private byte[] bodyCount;
 	private byte[][] state;
-	
-	public ListPane(ListInfo listInfo) {
+
+	public ListPane(ListInfo list) {
 		super();
-		this.listInfo = listInfo;
+		this.list = list;
 		initialize();
 	}
-	//	初始化
+
 	private void initialize() {
-		collectionCount = listInfo.getCollectionCount();	//获取分组数目
-		bodyCount = listInfo.getBodyCount();	//获取每组好友数目
-		String[] listName = listInfo.getListName();	//获取分组名称列表
-		int[][] bodyID = listInfo.getBodyNum();	//获取好友ID列表
-		String[][] nickName = listInfo.getBodyName();	//获取好友昵称列表
-		int[][] bodyAvatar = listInfo.getBodypic();	//获取好友头像列表
-		state = listInfo.getBodyState();	//获取好友状态列表
-		FriendGroup[] groupList = new FriendGroup[collectionCount];	//生成FriendGroup列表
-		friends = new FriendLabel[collectionCount][];	//生成FriendLabel列表
+		listCount = list.getCollectionCount();
+		String[] listName = list.getListName();
+		bodyCount = list.getBodyCount();
+		int[][] bodyNum = list.getBodyNum();
+		int[][] bodyPic = list.getBodypic();
+		String[][] nikeName = list.getBodyName();
+		state = list.getBodyState();
+		FriendGroup[] list = new FriendGroup[listCount];
+		user = new FriendLabel[listCount][];
 		int i, j;
-		for (i = 0; i < collectionCount; i++) {
-			friends[i] = new FriendLabel[bodyCount[i]];
+		for (i = 0; i < listCount; i++) {
+			user[i] = new FriendLabel[bodyCount[i]];
 			for (j = 0; j < bodyCount[i]; j++) {
-				int ID = bodyID[i][j];
-				String name = nickName[i][j];
-				int avatar = bodyAvatar[i][j];
+				int pic = bodyPic[i][j];
+				int num = bodyNum[i][j];
+				String name = nikeName[i][j];
 				byte State = state[i][j];
-				friends[i][j] = new FriendLabel(ID, name, avatar, State);
+				user[i][j] = new FriendLabel(pic, name, num, State);
+
 			}
-			groupList[i] = new FriendGroup(listName[i], friends[i]);
-			this.add(groupList[i]);	//渲染好友分组Label
+			list[i] = new FriendGroup(listName[i], user[i]);
+			this.add(list[i]);
 			for (j = 0; j < bodyCount[i]; j++) {
-				this.add(friends[i][j]);	//渲染分组好友Label
+				this.add(user[i][j]);
 			}
+
 		}
-		
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		this.setSize(272, 450);
+//		this.setLocation(20, 5);
 		this.setLocation(0, 0);
-		
 	}
-	//	显示新信息
-	public void HaveNewMsg(int ID){
-		for(int i = 0;i < collectionCount; i++){
-			for(int j = 0; j < bodyCount[i]; j++){
-				if(friends[i][j].getID() == ID){
-					friends[i][j].haveMSG();
-				}
-			}
-		}
-	}
-	
-	//	根据用户ID在列表里找对应用户
-	public UserInfo findUserByID(int IDNum) {
+
+	public UserInfo findUserByID(int IDNum){
 		UserInfo result = new UserInfo();
-		for(int i = 0; i < collectionCount; i++){
-			for(int j = 0; j < bodyCount[i]; j++){
-				if(friends[i][j].getID() == IDNum){
+		for(int i = 0;i<listCount;i++){
+			for(int j = 0; j<bodyCount[i];j++){
+				if(user[i][j].getMemberIDNum() == IDNum){
 					result.setIDNum(IDNum);
-					result.setNickName(friends[i][j].getNickName());
-					result.setAvatar(friends[i][j].getAvatar());
+					result.setNickName(user[i][j].getNickname());
+					result.setAvatar(user[i][j].getPic());
 					break;
 				}
 			}
@@ -87,31 +75,41 @@ public class ListPane extends JPanel{
 		return result;
 	}
 	
-	//	刷新列表
+	public void Hav_Mem_Msg(int IDNum){
+		for(int i = 0;i<listCount;i++){
+			for(int j = 0; j<bodyCount[i];j++){
+				if(user[i][j].getMemberIDNum() == IDNum){
+					user[i][j].hav_msg();
+				}
+			}
+		}
+	}
+	
 	public void Refresh_List(ListInfo new_list){
-		byte newCollectionCount = new_list.getCollectionCount();
-		byte[] newBodyCount = new_list.getBodyCount();
+		byte new_listCount = new_list.getCollectionCount();
+		byte[] new_bodyCount = new_list.getBodyCount();
 		byte[][] state = new_list.getBodyState();
-		boolean hasNewMember = false;
-		boolean hasNewList = false;
-		if(newCollectionCount == collectionCount){
-			for(int i = 0; i < collectionCount; i++){
-				if(newBodyCount[i] != bodyCount[i]){
-					hasNewMember = true;
+		boolean has_new_member = false;
+		boolean has_new_list = false;
+		if(new_listCount == listCount){
+			for(int i = 0; i< listCount;i++){
+				if(new_bodyCount[i]!=bodyCount[i]){
+					has_new_member = true;
 					break;
 				}
-				for(int j = 0; j < bodyCount[i]; j++){
-					friends[i][j].setState(state[i][j]);
+				for(int j = 0;j < bodyCount[i];j++){
+					user[i][j].set_state(state[i][j]);
 				}
 			}
 		}
 		else{
-			hasNewList = true;
+			has_new_list = true;
 		}
-		if(hasNewMember || hasNewList){
+		if(has_new_member || has_new_list){
 			this.removeAll();
-			this.listInfo = new_list;
+			list = new_list;
 			initialize();
+			
 		}
 	}
 }
