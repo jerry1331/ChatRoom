@@ -1526,3 +1526,30 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 
 !ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-06-13 17:29:30.481
 !MESSAGE executing callback sts4.classpath.BCiiuHSi SUCCESS [done]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-06-13 17:39:13.072
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-06-13 17:39:13.076
+!MESSAGE classpath=2 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-06-13 17:39:13.077
+!MESSAGE buffering callback sts4.classpath.BCiiuHSi _pasted_code_ false 2
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-06-13 17:39:13.078
+!MESSAGE executing callback sts4.classpath.BCiiuHSi 1 batched events
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-06-13 17:39:13.360
+!MESSAGE executing callback sts4.classpath.BCiiuHSi SUCCESS [done]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-06-13 17:39:22.929
+!MESSAGE exists = false open = true => deleted = true
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-06-13 17:39:22.930
+!MESSAGE buffering callback sts4.classpath.BCiiuHSi _pasted_code_ true 0
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-06-13 17:39:22.931
+!MESSAGE executing callback sts4.classpath.BCiiuHSi 1 batched events
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-06-13 17:39:22.959
+!MESSAGE executing callback sts4.classpath.BCiiuHSi SUCCESS [done]
