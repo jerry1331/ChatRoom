@@ -12,7 +12,6 @@ import tools.MyLineBorder;
 /**
  * LoginUI 客户端启动登陆界面 客户端程序从这里开始 利用ChatClient连接服务器 利用LoginAction监听按键
  * 
- * @author He11o_Liu
  */
 public class LoginUI extends JFrame {
 
@@ -208,12 +207,12 @@ public class LoginUI extends JFrame {
 		userNameLabel.setFocusable(true);
 		getContentPane().add(userNameLabel);
 		/**
-		 * 添加圆角的用户名输入框
+		 * 添加圆角的用户ID输入框
 		 */
 		IDArea = new JTextField();
 		IDArea.setBounds(50, 220, 235, 50);
 		IDArea.setBorder(bottomBorder);
-		IDArea.setText("  用户名");
+		IDArea.setText("  用户ID");
 		IDArea.setFont(new Font("微软雅黑", 0, 14));
 		IDArea.setForeground(Color.GRAY);// 默认设置输入框中的文字颜色为灰色
 		IDArea.addFocusListener(new FocusAdapter() {
@@ -232,7 +231,7 @@ public class LoginUI extends JFrame {
 			public void focusLost(FocusEvent e) {
 				// 失去焦点时，如果输入框中去掉空格后的字符串为空串则显示用户名
 				if ("".equals((IDArea.getText().trim()))) {
-					IDArea.setText("  用户名");
+					IDArea.setText("  用户ID");
 					IDArea.setFont(new Font("微软雅黑", 0, 14));
 					IDArea.setForeground(Color.GRAY);// 默认设置输入框中的文字颜色为灰色
 				}

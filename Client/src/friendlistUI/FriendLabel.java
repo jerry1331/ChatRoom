@@ -113,7 +113,7 @@ public class FriendLabel extends JLabel{
 		/*
 		 * äÖÈ¾ÈÝÆ÷
 		 */
-		setIcon(new ImageIcon("img/ListImg/memberBGOff.jpg"));
+		setIcon(new ImageIcon("img/memberBGOff.jpg"));
 
 		setSize(new Dimension(272, 70));
 		setLayout(null);
@@ -131,10 +131,10 @@ public class FriendLabel extends JLabel{
 			public void mouseReleased(MouseEvent arg0) {
 				// TODO Auto-generated method stub
 				if(isExit){
-					setIcon(new ImageIcon("img/ListImg/memberBGOff.jpg"));
+					setIcon(new ImageIcon("img/memberBGOff.jpg"));
 				}
 				else{
-					setIcon(new ImageIcon("img/ListImg/memberBGOn.jpg"));
+					setIcon(new ImageIcon("img/memberBGOn.jpg"));
 				}
 				
 			}
@@ -147,14 +147,14 @@ public class FriendLabel extends JLabel{
 			@Override
 			public void mouseExited(MouseEvent arg0) {
 				// TODO Auto-generated method stub
-				setIcon(new ImageIcon("img/ListImg/memberBGOff.jpg"));
+				setIcon(new ImageIcon("img/memberBGOff.jpg"));
 				isExit = true;
 			}
 			
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
 				// TODO Auto-generated method stub
-				setIcon(new ImageIcon("img/ListImg/memberBGOn.jpg"));
+				setIcon(new ImageIcon("img/memberBGOn.jpg"));
 				isExit = false;
 			}
 			
@@ -182,7 +182,7 @@ public class FriendLabel extends JLabel{
 	 */
 	public void haveMSG(){
 //		System.out.println("have a msg");
-		setIcon(new ImageIcon("img/ListImg/memberBGMsg.jpg"));
+		setIcon(new ImageIcon("img/memberBGMsg.jpg"));
 	}
 	
 	public void setState(byte state){

@@ -3,6 +3,8 @@ package client;
 import java.io.*;
 import java.net.*;
 
+import javax.swing.JOptionPane;
+
 import database.*;
 import message.*;
 import tools.*;
@@ -48,7 +50,7 @@ public class ChatClient extends Thread {
 		return false;
 	}
 	
-//	注冊
+//	注册
 	public boolean Reg(String NikeName, String PassWord) {
 		try {
 			MsgReg mr = new MsgReg();
@@ -79,11 +81,13 @@ public class ChatClient extends Thread {
 			}
 
 			MsgRegResp mrr = (MsgRegResp) recMsg;
-			if (mrr.getState() == 0) {
+			if (mrr.getState() == 0 && mr.getPwd().length()>=6) {
 				/*
 				 * 注册成功
 				 */
-				System.out.println("注册成功！注冊的的ID为" + mrr.getDest());
+				JOptionPane.showMessageDialog(null, "注册成功\n用户ID为" + mrr.getDest()+"\n"
+						+ "用户ID是登录唯一凭证，请妥善保管！");
+//				System.out.println("注册成功！注册的ID为" + mrr.getDest());
 				return true;
 			} else {
 				/*

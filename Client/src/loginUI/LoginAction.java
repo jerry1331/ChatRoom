@@ -74,11 +74,11 @@ public class LoginAction implements ActionListener {
 		if (jb.getText().equals("登录")) {
 			int userid = Integer.valueOf(userid_field.getText());
 			if (userid_field.getText().equals("")) {//若输入ID号为空
-				JOptionPane.showMessageDialog(null, "ID不为空", "Error", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "ID不能为空", "Error", JOptionPane.ERROR_MESSAGE);
 			} else {
 				String password = new String(password_field.getPassword());
 				if (password.equals(""))
-					JOptionPane.showMessageDialog(null, "密码不为空", "Error", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "密码不能为空", "Error", JOptionPane.ERROR_MESSAGE);
 				else{
 					int result = cc.Login(userid, password) ;
 					if(result == 0){//若密码正确

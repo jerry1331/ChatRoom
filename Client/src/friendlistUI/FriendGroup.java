@@ -32,7 +32,7 @@ public class FriendGroup extends JLabel {
 		jName.setText(name);
 		this.add(jName);
 
-		setIcon(new ImageIcon("img/ListImg/ListOff.jpg"));
+		setIcon(new ImageIcon("img/ListOff.jpg"));
 		setSize(new Dimension(272, 50));
 		for (int i = 0; i < users.length; i++) {
 			users[i].setVisible(false);
@@ -54,10 +54,10 @@ public class FriendGroup extends JLabel {
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
 				if(isClick){
-					setIcon(new ImageIcon("img/ListImg/ListOn.jpg"));
+					setIcon(new ImageIcon("img/ListOn.jpg"));
 				}
 				else{
-					setIcon(new ImageIcon("img/ListImg/ListOff.jpg"));
+					setIcon(new ImageIcon("img/ListOff.jpg"));
 				}
 			}
 			
@@ -66,10 +66,10 @@ public class FriendGroup extends JLabel {
 				// TODO Auto-generated method stub
 				if(isClick){
 
-					setIcon(new ImageIcon("img/ListImg/ListOnEnter.jpg"));
+					setIcon(new ImageIcon("img/ListOnEnter.jpg"));
 				}
 				else{
-					setIcon(new ImageIcon("img/ListImg/ListOffEnter.jpg"));
+					setIcon(new ImageIcon("img/ListOffEnter.jpg"));
 				}
 			}
 			
@@ -81,12 +81,12 @@ public class FriendGroup extends JLabel {
 					for (int i = 0; i < users.length; i++) {
 						users[i].setVisible(true);
 					}
-					setIcon(new ImageIcon("img/ListImg/ListOnEnter.jpg"));
+					setIcon(new ImageIcon("img/ListOnEnter.jpg"));
 				} else {
 					for (int i = 0; i < users.length; i++) {
 						users[i].setVisible(false);
 					}
-					setIcon(new ImageIcon("img/ListImg/ListOffEnter.jpg"));
+					setIcon(new ImageIcon("img/ListOffEnter.jpg"));
 				}
 			}
 		});

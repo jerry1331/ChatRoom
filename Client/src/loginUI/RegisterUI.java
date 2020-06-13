@@ -118,8 +118,8 @@ public class RegisterUI extends JFrame {
             //鼠标点击关闭图片，实现关闭窗体的功能
             @Override
             public void mouseClicked(MouseEvent e) {
-                //dispose();
-                System.exit(0);//使用dispose();也可以关闭只是不是真正的关闭
+                dispose();
+//                System.exit(0);
             }
             //鼠标进入，换关闭的背景图片
             @Override
@@ -290,10 +290,10 @@ public class RegisterUI extends JFrame {
                 // TODO Auto-generated method stub
                 //System.out.println("One click");
                 if (!cc.Reg(NikeName.getText(), password.getText())) {
-                    JOptionPane.showMessageDialog(null, "注册失败", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "注册失败，密码长度不得小于6位！", "Error", JOptionPane.ERROR_MESSAGE);
                 } else {
-                    regframe.dispose();
-                    la.setIs_Registering(false);// 可以打开注册窗口
+                    la.setIs_Registering(false);
+                    dispose();
                 }
             }
         });
