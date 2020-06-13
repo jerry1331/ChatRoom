@@ -220,7 +220,7 @@ public class LoginUI extends JFrame {
 			@Override
 			public void focusGained(FocusEvent e) {
 				// 获取焦点时，输入框中内容是“用户名”，那么去掉输入框中显示的内容；
-				if ("用户名".equals((IDArea.getText().trim()))) {
+				if ("  用户ID".equals((IDArea.getText()))) {
 					IDArea.setText("");
 					IDArea.setForeground(Color.black);// 设置颜色为黑色
 				}
